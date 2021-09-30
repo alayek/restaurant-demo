@@ -1,13 +1,14 @@
+// eslint-disable-next-line no-unused-expressions
 {
   "compilerOptions": {
-    "module": "ES2020",
+    "module": "commonjs", // we want to use latest module systems
     "declaration": true,
     "moduleResolution": "node",
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es2021",
-    "lib": ["ES2021"],
+    "target": "es5", // running on Node 16 latest, no reason to not use ES2021 target
+    "lib": ["ES2019"],
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",

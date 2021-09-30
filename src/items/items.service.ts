@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CreateItemDto } from './dto/create-item.dto.js';
-import { UpdateItemDto } from './dto/update-item.dto.js';
-import { sleep } from '../util/sleep.js';
+import { CreateItemDto } from './dto/create-item.dto';
+import { UpdateItemDto } from './dto/update-item.dto';
+import { sleep } from '../util/sleep';
 
 const items: CreateItemDto[] = [
   {
@@ -26,7 +26,8 @@ const items: CreateItemDto[] = [
 
 @Injectable()
 export class ItemsService {
-  create(createItemDto: CreateItemDto) {
+  // eslint-disable-next-line no-unused-vars
+  create(_createItemDto: CreateItemDto) {
     return 'This action adds a new item';
   }
 
@@ -44,7 +45,8 @@ export class ItemsService {
     return new NotFoundException(`item with id ${id} NOT FOUND`);
   }
 
-  update(id: number, updateItemDto: UpdateItemDto) {
+  // eslint-disable-next-line no-unused-vars
+  update(id: number, _updateItemDto: UpdateItemDto) {
     return `This action updates a #${id} item`;
   }
 

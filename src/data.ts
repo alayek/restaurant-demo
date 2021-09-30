@@ -1,4 +1,4 @@
-import { CreateItemDto } from '../src/items/dto/create-item.dto.js';
+import { CreateItemDto } from '../src/items/dto/create-item.dto';
 
 export const items: CreateItemDto[] = [
   {
