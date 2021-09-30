@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { CreateItemDto } from './dto/create-item.dto';
 import { UpdateItemDto } from './dto/update-item.dto';
 import { sleep } from '../util/sleep';
@@ -36,13 +36,9 @@ export class ItemsService {
     return items.slice(0);
   }
 
-  async findOne(id: number): Promise<CreateItemDto | NotFoundException> {
+  async findOne(id: number): Promise<CreateItemDto | undefined> {
     await sleep(50);
-    const item = items.find((item) => item.id === id);
-    if (item) {
-      return item;
-    }
-    return new NotFoundException(`item with id ${id} NOT FOUND`);
+    return items.find((item) => item.id === id);
   }
 
   // eslint-disable-next-line no-unused-vars
