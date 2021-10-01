@@ -7,8 +7,8 @@
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es5", // running on Node 16 latest, no reason to not use ES2021 target
-    "lib": ["ES2019"],
+    "target": "ES2020", // running on Node 16 latest, no reason to not use ES2021 target
+    "lib": ["ES2021"],
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",

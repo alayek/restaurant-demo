@@ -7,6 +7,7 @@ dotenv.config();
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule);
+  app.setGlobalPrefix('api');
   if (process.env.NODE_ENV === 'production') {
     app.use(helmet());
   }
