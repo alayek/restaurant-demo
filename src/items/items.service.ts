@@ -27,8 +27,10 @@ const items: CreateItemDto[] = [
 @Injectable()
 export class ItemsService {
   // eslint-disable-next-line no-unused-vars
-  create(_createItemDto: CreateItemDto) {
-    return 'This action adds a new item';
+  async create(createItemDto: CreateItemDto): Promise<string> {
+    await sleep(20);
+    console.log(createItemDto);
+    return `Item Created`;
   }
 
   async findAll(): Promise<CreateItemDto[]> {
