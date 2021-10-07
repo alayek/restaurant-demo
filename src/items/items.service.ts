@@ -2,6 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { CreateItemDto } from './dto/create-item.dto';
 import { UpdateItemDto } from './dto/update-item.dto';
 import { sleep } from '../util/sleep';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Item } from './entity/items.entity';
 
 const items: CreateItemDto[] = [
   {
@@ -26,16 +29,22 @@ const items: CreateItemDto[] = [
 
 @Injectable()
 export class ItemsService {
-  // eslint-disable-next-line no-unused-vars
-  async create(createItemDto: CreateItemDto): Promise<string> {
+  constructor(
+    @InjectRepository(Item) private readonly itemRepo: Repository<Item>,
+  ) {}
+
+  async create(createItemDto: CreateItemDto): Promise<Item> {
     await sleep(20);
-    console.log(createItemDto);
-    return `Item Created`;
+    return this.itemRepo.save({
+      name: createItemDto.name,
+      description: createItemDto.description,
+      price: createItemDto.price,
+    });
   }
 
   async findAll(): Promise<CreateItemDto[]> {
     await sleep(100);
-    return items.slice(0);
+    return this.itemRepo.find();
   }
 
   async findOne(id: number): Promise<CreateItemDto | undefined> {
